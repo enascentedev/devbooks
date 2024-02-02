@@ -1,0 +1,91 @@
+## ----- ----- -----
+
+Estudos: Devbooks doc banco de dados
+Author: Emanuel
+
+## ----- ----- -----
+
+Documentação do Banco de Dados Devsbook
+Visão Geral
+Este documento descreve o esquema do banco de dados para a aplicação Devsbook. O Devsbook é uma plataforma social onde usuários podem interagir, compartilhar posts e comentar em publicações. Este documento é destinado a desenvolvedores, gerentes de projeto e qualquer pessoa interessada em entender a estrutura do banco de dados da aplicação.
+
+Estrutura do Banco de Dados
+O banco de dados consiste nas seguintes tabelas principais:
+
+Users
+
+Descrição: Armazena informações dos usuários.
+Colunas Principais:
+id: Identificador único do usuário.
+email: Email do usuário.
+password: Senha do usuário.
+name: Nome do usuário.
+birthdate: Data de nascimento.
+city: Cidade do usuário.
+work: Profissão do usuário.
+avatar: Link para a imagem do avatar.
+cover: Link para a imagem de capa.
+token: Token de autenticação.
+UserRelations
+
+Descrição: Representa as relações entre usuários, como amizades ou seguidores.
+Colunas Principais:
+id: Identificador único da relação.
+user_from: ID do usuário que iniciou a relação.
+user_to: ID do usuário que recebeu a relação.
+Posts
+
+Descrição: Armazena os posts feitos pelos usuários.
+Colunas Principais:
+id: Identificador único do post.
+type: Tipo do post (texto, foto).
+created_at: Data e hora da criação do post.
+body: Conteúdo do post.
+PostComments
+
+Descrição: Armazena os comentários feitos nos posts.
+Colunas Principais:
+id: Identificador único do comentário.
+id_post: ID do post comentado.
+id_user: ID do usuário que fez o comentário.
+created_at: Data e hora do comentário.
+body: Conteúdo do comentário.
+PostLikes
+
+Descrição: Armazena as curtidas dos usuários nos posts.
+Colunas Principais:
+id: Identificador único da curtida.
+id_post: ID do post curtido.
+id_user: ID do usuário que curtiu.
+Relacionamentos
+UserRelations <-> Users:
+user_from e user_to em UserRelations são chaves estrangeiras que se referem a id em Users.
+Posts <-> Users:
+id_user em Posts é uma chave estrangeira que se refere a id em Users.
+PostComments <-> Posts:
+id_post em PostComments é uma chave estrangeira que se refere a id em Posts.
+PostComments <-> Users:
+id_user em PostComments é uma chave estrangeira que se refere a id em Users.
+PostLikes <-> Posts:
+id_post em PostLikes é uma chave estrangeira que se refere a id em Posts.
+PostLikes <-> Users:
+id_user em PostLikes é uma chave estrangeira que se refere a id em Users.
+Convenções de Nomenclatura
+Todas as tabelas e colunas seguem a convenção de nomenclatura em camelCase.
+Os identificadores primários de todas as tabelas são nomeados como id.
+Os nomes das tabelas são autoexplicativos e refletem seu propósito dentro da aplicação.
+Segurança e Privacidade
+As senhas dos usuários são armazenadas em formato criptografado.
+É importante garantir que o acesso ao banco de dados seja restrito e seguro.
+Considerações Finais
+Esta documentação fornece uma visão geral do esquema do banco de dados Devsbook. Para detalhes mais técnicos, como índices e restrições específicas, consulte o esquema de banco de dados no SQL.
+
+-- ----- ----- -----
+
+
+-- ----- ----- -----
+-- ----- ----- -----
+-- ----- ----- -----
+-- ----- ----- -----
+-- ----- ----- ----- ##
+
